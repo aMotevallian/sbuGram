@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="378.0" style="-fx-background-color: #393232;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CLIENTS.Controller.logIn">
+   <children>
+      <Button fx:id="logIn" layoutX="163.0" layoutY="267.0" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: #4D4545;" text="LOG IN" textFill="#ed8d8d" />
+      <TextField fx:id="username" layoutX="115.0" layoutY="145.0" promptText="username" style="-fx-background-color: #4D4545;" />
+      <PasswordField fx:id="password" layoutX="115.0" layoutY="183.0" promptText="password" style="-fx-background-color: #4D4545;" />
+      <CheckBox fx:id="showPass" layoutX="115.0" layoutY="215.0" mnemonicParsing="false" onAction="#show" text="show password" textFill="#8d6262" />
+      <Text fill="#8d6262" layoutX="124.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="forgot password?" />
+      <Text fill="#8d6262" layoutX="114.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="don't have an account?" wrappingWidth="155.642578125" />
+      <Text fx:id="signUp" fill="#ed8d8d" layoutX="246.0" layoutY="311.0" onMouseClicked="#signUp" strokeType="OUTSIDE" strokeWidth="0.0" text="sign up">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Text>
+      <Text fx:id="wrongP" fill="#4ec8cf" layoutX="147.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wrong password!" visible="false" />
+      <Text fx:id="pForgot" fill="#ed8d8d" layoutX="237.0" layoutY="336.0" onMouseClicked="#findPassword" strokeType="OUTSIDE" strokeWidth="0.0" text="click here!" />
+      <TextField fx:id="pShow" layoutX="115.0" layoutY="183.0" promptText="password" visible="false" />
+   </children>
+</Pane>

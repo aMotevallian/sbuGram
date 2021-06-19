@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="root" prefHeight="60.0" prefWidth="420.0" style="-fx-background-color: #4D4545;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Circle fx:id="profile" fill="#7c5252" layoutX="34.0" layoutY="30.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="username" layoutX="71.0" layoutY="22.0" text="username" textFill="#ed8d8d" />
+      <Label fx:id="cmBox" layoutX="151.0" layoutY="22.0" text="comment" textFill="#8d6262" />
+      <Label layoutX="123.0" layoutY="22.0" text="   :" textFill="#ed8d8d" />
+   </children>
+</AnchorPane>

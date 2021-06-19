@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.8344947735191638" orientation="VERTICAL" prefHeight="600.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #393232;">
+               <children>
+                  <ListView fx:id="comments" layoutX="-1.0" layoutY="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="420.0" style="-fx-background-color: #393232;" />
+            <Button contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="Button" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0">
+                     <image>
+                        <Image url="@../images/back.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="162.0" layoutY="17.0" text="Comments" textFill="#ed8d8d">
+               <font>
+                  <Font name="Century" size="19.0" />
+               </font>
+            </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="90.0" prefWidth="418.0" style="-fx-background-color: #4D4545;">
+               <children>
+                  <Circle fx:id="profileImg" fill="#5e5858" layoutX="33.0" layoutY="46.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
+                  <TextArea fx:id="commentBox" blendMode="SOFT_LIGHT" layoutX="126.0" layoutY="26.0" prefHeight="41.0" prefWidth="225.0" promptText="comment..." />
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="354.0" layoutY="27.0" onMouseClicked="#send">
+                     <image>
+                        <Image url="@../images/send.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="username" fill="#8d6262" layoutX="64.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username:" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>

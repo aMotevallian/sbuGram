@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #393232;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CLIENTS.Controller.signUp">
+   <children>
+      <TextField fx:id="name" layoutX="187.0" layoutY="120.0" promptText="name" style="-fx-background-color: #4D4545;">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="username" layoutX="189.0" layoutY="200.0" promptText="username" style="-fx-background-color: #4D4545;">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></TextField>
+      <Text fill="#8d6262" fontSmoothingType="LCD" layoutX="58.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password:">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></Text>
+      <Text fill="#8d6262" fontSmoothingType="LCD" layoutX="57.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username:">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></Text>
+      <PasswordField fx:id="password" layoutX="189.0" layoutY="239.0" promptText="password" style="-fx-background-color: #4D4545;">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></PasswordField>
+      <PasswordField fx:id="password2" layoutX="189.0" layoutY="281.0" promptText="password" style="-fx-background-color: #4D4545;">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></PasswordField>
+      <Text fill="#8d6262" fontSmoothingType="LCD" layoutX="67.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name:">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></Text>
+      <Text fill="#8d6262" fontSmoothingType="LCD" layoutX="39.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="repeat password:">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></Text>
+      <Button fx:id="signMeUp" blendMode="SOFT_LIGHT" layoutX="152.0" layoutY="371.0" mnemonicParsing="false" onAction="#signUp" text="sign me up" textFill="#393232">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></Button>
+      <Text fx:id="notMatch" fill="#ed8d8d" layoutX="135.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="passwords doesnt match!" visible="false" />
+      <Text fx:id="taken" fill="#ed8d8d" layoutX="121.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this username is already taken!" visible="false" />
+      <Text fx:id="notStrong" fill="#ed8d8d" layoutX="118.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password is not strong enough!" visible="false" />
+      <TextField fx:id="question" layoutX="189.0" layoutY="158.0" promptText="in-cse forgot your pass" style="-fx-background-color: #4D4545;">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></TextField>
+      <Text fill="#8d6262" fontSmoothingType="LCD" layoutX="37.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="who is your hero?">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></Text>
+      <Text fx:id="completeAll" fill="#ed8d8d" layoutX="145.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="all fields must be completed!" visible="false" />
+      <TextField fx:id="imgPath" layoutX="187.0" layoutY="81.0" promptText="path" style="-fx-background-color: #4D4545;">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></TextField>
+      <Text fill="#8d6262" fontSmoothingType="LCD" layoutX="48.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="profile image:">
+         <font>
+            <Font name="Century" size="13.0" />
+         </font></Text>
+      <Text fx:id="pathNotFound" fill="#ed8d8d" layoutX="145.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="image path not found!" visible="false" />
+   </children>
+</Pane>
