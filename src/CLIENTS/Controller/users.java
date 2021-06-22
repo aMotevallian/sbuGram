@@ -25,14 +25,6 @@ public class users {
         people.setCellFactory(people -> new usercell());
     }
 
-    public void goToMenu(MouseEvent mouseEvent) {
-        try {
-            new PageLoader().load("menu");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public void goBack(ActionEvent actionEvent) {
         try {
