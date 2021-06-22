@@ -33,7 +33,12 @@ public class users {
         }
     }
 
-    public void backToMenu(ActionEvent actionEvent) throws IOException {
-        new PageLoader().load("menu");
+
+    public void goBack(ActionEvent actionEvent) {
+        try {
+            new PageLoader().load("menu");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
