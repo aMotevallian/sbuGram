@@ -222,9 +222,6 @@ public class ClientHandler extends Thread {
                     File file1=new File("src\\SERVER\\profileImagesServer");
                     num= file1.listFiles().length;
                     File file2=new File("src\\SERVER\\profileImagesServer");
-                   // oos.write(num);
-                    System.out.println(num);
-                   // oos.flush();
                     for (File f: file2.listFiles()){
                         if (f.isFile() && f.getName().endsWith(".jpg"))
                             oos.writeUTF(f.getName());
@@ -234,32 +231,11 @@ public class ClientHandler extends Thread {
                         BufferedImage image = ImageIO.read(f);
                         ByteArrayOutputStream baos = new ByteArrayOutputStream();
                         ImageIO.write(image, "jpg", baos);
-                        //ImageIO.write(image , "jpg" , new File("src\\CLIENTS\\images\\"+username+".jpg"));
                         byte[] size = ByteBuffer.allocate(40000).putInt(baos.size()).array();
                         os.write(size);
                         os.write(baos.toByteArray());
                         os.flush();
                     }
-                   /* oos.write(num);
-                    System.out.println(num);
-                    oos.flush();*/
-                   /* for (File f: file.listFiles() ){
-                       // if (f.isFile() && f.getName().endsWith(".jpg")){
-                            oos.writeUTF(f.getName());
-                        System.out.println("sentt");
-                            oos.flush();
-
-                            OutputStream os = client.getOutputStream();
-                            BufferedImage image = ImageIO.read(f);
-                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                            ImageIO.write(image, "jpg", baos);
-                            //ImageIO.write(image , "jpg" , new File("src\\CLIENTS\\images\\"+username+".jpg"));
-                            byte[] size = ByteBuffer.allocate(40000).putInt(baos.size()).array();
-                            os.write(size);
-                            os.write(baos.toByteArray());
-                            os.flush();
-                        //}
-                    }*/
                 }
 
             }
