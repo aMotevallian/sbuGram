@@ -62,6 +62,7 @@ public class othersProfile {
             if (u.getUsername().equals(name)){
                 thisUser=u;
                 info.setText(u.getInfo());
+                info.setEditable(false);
             }
         if (thisUser != null) {
                 flwingNum.setText(String.valueOf(thisUser.getFollowings()));
