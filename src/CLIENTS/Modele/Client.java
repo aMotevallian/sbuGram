@@ -1,6 +1,7 @@
 package CLIENTS.Modele;
 
 import common.Post;
+import common.user;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -15,7 +16,7 @@ public class Client {
     ObjectOutputStream oos;
     ObjectInputStream ois;
 
-    public Client(String username, String password,String name , String ques , String path) throws IOException {
+    public Client(String username, String password,String name , String ques , String path) throws IOException, ClassNotFoundException {
         this.username = username;
         this.password = password;
         this.name=name;
@@ -31,14 +32,27 @@ public class Client {
         oos.flush();
         OutputStream os= client.getOutputStream();
         BufferedImage image= ImageIO.read(new File(path));
+
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
         ImageIO.write(image , "jpg" , baos);
-        ImageIO.write(image , "jpg" , new File("src\\CLIENTS\\images\\"+username+".jpg"));
+
         byte[] size = ByteBuffer.allocate(40000).putInt(baos.size()).array();
         os.write(size);
         os.write(baos.toByteArray());
         os.flush();
         System.out.println("im connected");
+        Socket getUsers;
+        getUsers = new Socket("localhost", 8000);
+        ObjectOutputStream oos = new ObjectOutputStream(getUsers.getOutputStream());
+        ObjectInputStream ois = new ObjectInputStream(getUsers.getInputStream());
+        oos.writeUTF("get users");
+        oos.flush();
+        try {
+            Main.users= (ArrayList<user>) ois.readObject();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        getUsers.close();
     }
     public Client(String username, String password) throws IOException {
         this.username = username;

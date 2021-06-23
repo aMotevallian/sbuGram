@@ -1,22 +1,17 @@
 package CLIENTS.Modele;
 
-import CLIENTS.Controller.cell;
-import CLIENTS.Controller.cellController;
-import CLIENTS.Controller.cm;
 import common.Post;
-import common.comment;
 import common.user;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -38,6 +33,7 @@ public class Main extends Application {
             oos.flush();
             clientsUserPass = new ConcurrentHashMap<>((Map<String, String>) ois.readObject());
             clientUserFindPass = new ConcurrentHashMap<>((Map<String, String>) ois.readObject());
+            client.close();
 
             Socket client2 = new Socket("localhost", 8000);
             ObjectOutputStream os = new ObjectOutputStream(client2.getOutputStream());
@@ -45,6 +41,7 @@ public class Main extends Application {
             os.writeUTF("get users");
             os.flush();
             users= (ArrayList<user>) is.readObject();
+            client2.close();
 
             Socket clientPosts = new Socket("localhost", 8000);
             ObjectOutputStream ooss = new ObjectOutputStream(clientPosts.getOutputStream());
@@ -52,6 +49,7 @@ public class Main extends Application {
             ooss.writeUTF("initialize posts");
             ooss.flush();
             posts = (ArrayList<Post>) oiss.readObject();
+            clientPosts.close();
 
             Socket clientt = new Socket("localhost", 8000);
             ObjectOutputStream oos2 = new ObjectOutputStream(clientt.getOutputStream());
@@ -61,22 +59,22 @@ public class Main extends Application {
             //int num=ois2.readInt();
             for (int i=0 ; i<users.size() ; i++) {
                 String name=null;
-                synchronized (ois2) {
-                    name = ois2.readUTF();
-                }
-                    InputStream inputStream = clientt.getInputStream();
-                    byte[] sizeAr = new byte[40000];
-                    inputStream.read(sizeAr);
-                    int size = ByteBuffer.wrap(sizeAr).asIntBuffer().get();
+                name = ois2.readUTF();
 
-                    byte[] imageAr = new byte[size];
-                    inputStream.read(imageAr);
+                InputStream inputStream = clientt.getInputStream();
+                byte[] sizeAr = new byte[40000];
+                inputStream.read(sizeAr);
+                int size = ByteBuffer.wrap(sizeAr).asIntBuffer().get();
 
-                    BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
-                    File f = new File("src\\CLIENTS\\images\\" + name);
-                    if (!f.exists())
-                        ImageIO.write(image, "jpg", f);
+                byte[] imageAr = new byte[size];
+                inputStream.read(imageAr);
+
+                BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
+                File f = new File("src\\CLIENTS\\images\\" + name);
+                if (!f.exists())
+                    ImageIO.write(image, "jpg", f);
             }
+            clientt.close();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
