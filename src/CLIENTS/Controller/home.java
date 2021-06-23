@@ -46,6 +46,17 @@ public class home {
     }
 
     public void refresh(MouseEvent mouseEvent) {
+        posts=new ArrayList<>();
+        user mainUser=null;
+        for (user user:Main.users)
+            if (Main.currentUser.equals(user.getUsername()))
+                mainUser=user;
+        for (Post p:Main.posts){
+            if (mainUser != null) {
+                if (mainUser.getFollowingList().contains(p.getPostedBy()) || p.getPostedBy().equals(Main.currentUser))
+                    posts.add(p);
+            }
+        }
         postList.setItems(FXCollections.observableArrayList(posts));
         postList.setCellFactory(postList -> new cell());
         postList.getItems().sort((o1, o2) -> {
