@@ -4,6 +4,7 @@ import CLIENTS.Modele.Main;
 import CLIENTS.Modele.PageLoader;
 import common.Post;
 import common.user;
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,32 +15,33 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
 public class profile {
-    public ImageView profileImage;
     public Text username;
     public ListView<Post> posts;
     public Text flwing;
     public Text flwr;
     public TextArea info;
     public Button done;
+    public Circle profile;
 
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         for (user user : Main.users){
             if (user.getUsername().equals(Main.currentUser)){
                 flwing.setText(String.valueOf(user.getFollowings()));
                 flwr.setText(String.valueOf(user.getFollowers()));
+                info.setText(user.getInfo());
             }
         }
         done.setVisible(false);
@@ -47,11 +49,11 @@ public class profile {
         info.setEditable(false);
         File f= new File("src\\CLIENTS\\images\\" + username.getText() + ".jpg");
         if (!f.exists()){
-            profileImage.setImage(new Image("CLIENTS\\images\\defaultProfile.jpg" , false));
+            profile.setFill(new ImagePattern(new Image("CLIENTS\\images\\defaultProfile.jpg" )));
         }
         else {
-            Image image = new Image("CLIENTS\\images\\" +username.getText() + ".jpg" ,false);
-            profileImage.setImage(image);
+            Image image=new Image(new FileInputStream(f));
+            profile.setFill(new ImagePattern(image));
         }
         List<Post> myPosts=new ArrayList<>();
         for (Post p: Main.posts){
@@ -87,7 +89,7 @@ public class profile {
                     oos.flush();
                     Main.users= (ArrayList<common.user>) ois.readObject();
                     info.setEditable(false);
-                    done.setVisible(false);
+
                 } catch (IOException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -97,6 +99,7 @@ public class profile {
                         info.setText(us.getInfo());
                     }
                 }
+                done.setVisible(false);
             }
         }
     }
