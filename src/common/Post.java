@@ -2,13 +2,9 @@ package common;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 public class Post implements Serializable {
@@ -97,14 +93,5 @@ public class Post implements Serializable {
     public String toString() {
         return this.title;
     }
-/*public static int compare(Post o1, Post o2) throws ParseException {
-        if (o1.getDateStr()){
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-            o1.setDate(formatter.parse(o1.getDateStr()));
-        }
-        if (o2.getDate()==null){
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-            o2.setDate(formatter.parse(o2.getDateStr()));
-        }
-    }*/
+
 }

@@ -5,12 +5,10 @@ import common.comment;
 import common.user;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.Socket;
 import java.nio.ByteBuffer;
-import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class ClientHandler extends Thread {
@@ -55,6 +53,7 @@ public class ClientHandler extends Thread {
                         imgPath=userPass[4];
                         Server.map.put(username, pass);
                         Server.userQ.put(username, ques);
+                        Server.users.add(new user(username));
                         BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Atenaa\\IdeaProjects\\sbuGram\\src\\SERVER\\userPassServerSide.txt", true));
                         bw.write(username + "\t" + pass + "\t" + name + "\t" + ques);
                         bw.flush();
@@ -72,7 +71,6 @@ public class ClientHandler extends Thread {
                     BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
                     File f=new File("src\\SERVER\\profileImagesServer\\"+username+".jpg");
                     ImageIO.write(image, "jpg",f);
-                    Server.users.add(new user(username));
 
                     System.out.println(username + " registered."+"\t"+imgPath);
                     java.util.Date date = new java.util.Date();
@@ -89,7 +87,6 @@ public class ClientHandler extends Thread {
                             username = userPass[0];
                             pass = userPass[1];
                         }
-                        System.out.println("action: login");
                         System.out.println(username + " login.");
                         java.util.Date date = new java.util.Date();
                         System.out.println("time: " + date);
@@ -139,6 +136,11 @@ public class ClientHandler extends Thread {
                         }
                         oos.writeObject(Server.postList);
                         oos.flush();
+                        System.out.println(username+" like");
+                        System.out.println("message:" +post.getAuthor()+" "+post.getTitle());
+                        java.util.Date date = new java.util.Date();
+                        System.out.println("time: " + date);
+                        System.out.println();
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -154,6 +156,11 @@ public class ClientHandler extends Thread {
                         }
                         oos.writeObject(Server.postList);
                         oos.flush();
+                        System.out.println(cm.getUsername() +" comment");
+                        System.out.println("message:" + post.getTitle());
+                        java.util.Date date = new java.util.Date();
+                        System.out.println("time: " + date);
+                        System.out.println();
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -170,8 +177,7 @@ public class ClientHandler extends Thread {
                         oos.writeObject(Server.users);
                         oos.flush();
 
-                        System.out.println("action: follow");
-                        System.out.println(user.getUsername()+" action");
+                        System.out.println(user.getUsername()+" follow");
                         System.out.println(gotFollowed);
                         java.util.Date date = new java.util.Date();
                         System.out.println("time: " + date);
@@ -192,8 +198,7 @@ public class ClientHandler extends Thread {
                         oos.writeObject(Server.users);
                         oos.flush();
 
-                        System.out.println("action: unfollow");
-                        System.out.println(user.getUsername()+" action");
+                        System.out.println(user.getUsername()+" unfollow");
                         System.out.println(gotUnFollowed);
                         java.util.Date date = new java.util.Date();
                         System.out.println("time: " + date);
@@ -213,6 +218,11 @@ public class ClientHandler extends Thread {
                         }
                         oos.writeObject(Server.users);
                         oos.flush();
+                        System.out.println(user.getUsername() +" update info");
+                       // System.out.println("message:" + newPost.getTitle()+" "+newPost.getPostedBy());
+                        java.util.Date date = new java.util.Date();
+                        System.out.println("time: " + date);
+                        System.out.println();
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
