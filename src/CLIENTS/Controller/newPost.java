@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class newPost {
@@ -23,19 +24,21 @@ public class newPost {
         current.setTitle(title.getText());
         current.setDescription(description.getText());
         current.setPostedBy(Main.currentUser);
-        Date date=new java.util.Date();
+        Date date=new Date();
         current.setDate( date);
         current.setDate(date.toString());
         Main.posts.add(current);
         try {
             Socket socket=new Socket("localhost" , 8000);
             ObjectOutputStream os=new ObjectOutputStream(socket.getOutputStream());
+            ObjectInputStream is=new ObjectInputStream(socket.getInputStream());
             os.writeUTF("add post");
             os.flush();
             os.writeObject(current);
             os.flush();
+            Main.posts= (ArrayList<Post>) is.readObject();
             new PageLoader().load("home");
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
