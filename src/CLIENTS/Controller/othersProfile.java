@@ -15,10 +15,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -37,7 +34,7 @@ public class othersProfile {
         this.name=username;
     }
     @FXML
-    public void initialize(){
+    public void initialize() throws FileNotFoundException {
         ArrayList<Post> postz=new ArrayList<>();
         for (Post p: Main.posts){
             if (p.getPostedBy().equals(name))
@@ -52,7 +49,7 @@ public class othersProfile {
             pic.setFill(new ImagePattern(new Image("CLIENTS\\images\\defaultProfile.jpg" , false)));
         }
         else {
-            Image image = new Image("CLIENTS\\images\\" + name  + ".jpg" ,false);
+            Image image = new Image(new FileInputStream(f));
             pic.setFill(new ImagePattern(image));
         }
 
@@ -65,12 +62,14 @@ public class othersProfile {
                 info.setEditable(false);
             }
         if (thisUser != null) {
-                flwingNum.setText(String.valueOf(thisUser.getFollowings()));
-                flwrNum.setText(String.valueOf(thisUser.getFollowers()));
+            flwingNum.setText(String.valueOf(thisUser.getFollowings()));
+            flwrNum.setText(String.valueOf(thisUser.getFollowers()));
         }
 
     }
-    public void goBack(ActionEvent actionEvent) throws IOException {
+    @FXML
+    public void back(ActionEvent actionEvent) throws IOException {
         new PageLoader().load("users");
     }
+
 }
