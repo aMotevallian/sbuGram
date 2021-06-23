@@ -42,6 +42,13 @@ public class othersProfile {
         }
         posts.setItems(FXCollections.observableArrayList(postz));
         posts.setCellFactory(posts -> new cell());
+        posts.getItems().sort((o1, o2) -> {
+            if (o1.getDate().after(o2.getDate()))
+                return -1;
+            if (o1.getDate().before(o2.getDate()))
+                return 1;
+            return 0;
+        });
 
         username.setText(name);
         File f= new File("src\\CLIENTS\\images\\" + name + ".jpg");

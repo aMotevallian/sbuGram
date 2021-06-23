@@ -62,6 +62,13 @@ public class profile {
         }
         posts.setItems(FXCollections.observableArrayList(myPosts));
         posts.setCellFactory(posts -> new cell());
+        posts.getItems().sort((o1, o2) -> {
+            if (o1.getDate().after(o2.getDate()))
+                return -1;
+            if (o1.getDate().before(o2.getDate()))
+                return 1;
+            return 0;
+        });
     }
 
     public void edit(ActionEvent actionEvent) {
