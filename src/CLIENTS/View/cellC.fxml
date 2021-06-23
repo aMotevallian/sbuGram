@@ -10,50 +10,50 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="root" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="400.0" style="-fx-background-color: #393232;" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="root" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="400.0" style="-fx-background-color: #F0D9E7;" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="username" layoutX="77.0" layoutY="17.0" text="username" textFill="#8d6262">
+      <Label fx:id="username" layoutX="77.0" layoutY="17.0" text="username" textFill="#a239ea">
          <font>
             <Font name="Century" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="title" layoutX="185.0" layoutY="16.0" text="title" textFill="#8d6262">
+      <Label fx:id="title" layoutX="185.0" layoutY="16.0" text="title" textFill="#a239ea">
          <font>
             <Font name="Century" size="18.0" />
          </font>
       </Label>
-      <Circle fx:id="img" fill="#8d6262" layoutX="51.0" layoutY="27.0" radius="20.0" stroke="#8d6262" strokeType="INSIDE" />
-      <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="32.0" layoutY="240.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#repost" prefHeight="30.0" prefWidth="30.0" text="repost">
+      <Circle fx:id="img" fill="#ff94cc" layoutX="51.0" layoutY="27.0" radius="20.0" stroke="#8d6262" strokeType="INSIDE" />
+      <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="32.0" layoutY="240.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#repost" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #F0D9E7;" text="repost">
          <font>
             <Font name="Century" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="33.0" fitWidth="30.0">
+            <ImageView fitHeight="35.0" fitWidth="35.0">
                <image>
                   <Image url="@../images/repost.jpg" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="347.0" layoutY="229.0" mnemonicParsing="false" onAction="#like" prefHeight="23.0" prefWidth="24.0" style="-fx-background-color: #ED8D8D;" styleClass="likebtn" text="like">
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="347.0" layoutY="229.0" mnemonicParsing="false" onAction="#like" prefHeight="23.0" prefWidth="24.0" style="-fx-background-color: #FF94CC;" styleClass="likebtn" text="like">
          <font>
             <Font name="Century" size="12.0" />
          </font>
       </Button>
-      <Label fx:id="date" layoutX="31.0" layoutY="212.0" text="date and time" textFill="#8d6262" />
-      <TextArea fx:id="description" blendMode="SOFT_LIGHT" layoutX="28.0" layoutY="56.0" prefHeight="156.0" prefWidth="349.0" style="-fx-background-color: #4D4545; -fx-border-color: pink;" />
+      <Label fx:id="date" layoutX="31.0" layoutY="212.0" text="date and time" textFill="#5c33f6" />
+      <TextArea fx:id="description" blendMode="MULTIPLY" layoutX="28.0" layoutY="56.0" prefHeight="156.0" prefWidth="349.0" style="-fx-background-color: #94D0CC; -fx-border-color: #5C33F6;" />
       <Button fx:id="addCm" contentDisplay="GRAPHIC_ONLY" layoutX="71.0" layoutY="240.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addCm" prefHeight="30.0" prefWidth="30.0" text="addcm" AnchorPane.topAnchor="240.0">
          <font>
             <Font name="Century" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="33.0" fitWidth="30.0">
+            <ImageView fitHeight="45.0" fitWidth="45.0">
                <image>
                   <Image url="@../images/add.jpg" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Text fx:id="likes" layoutX="345.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="30.0" />
+      <Text fx:id="likes" fill="#a239ea" layoutX="346.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="30.0" />
    </children>
 </AnchorPane>

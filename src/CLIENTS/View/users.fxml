@@ -9,9 +9,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="420.0" style="-fx-background-color: #393232;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CLIENTS.Controller.users">
+<AnchorPane prefHeight="600.0" prefWidth="420.0" style="-fx-background-color: #F0D9E7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CLIENTS.Controller.users">
    <children>
-      <ListView fx:id="people" layoutX="14.0" layoutY="52.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="420.0" style="-fx-background-color: #4D4545;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0" />
+      <ListView fx:id="people" layoutX="14.0" layoutY="52.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="548.0" prefWidth="420.0" style="-fx-background-color: #EEC4C4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0" />
       <Button contentDisplay="GRAPHIC_ONLY" layoutX="8.0" layoutY="7.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" prefHeight="38.0" prefWidth="38.0" text="Button">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0">

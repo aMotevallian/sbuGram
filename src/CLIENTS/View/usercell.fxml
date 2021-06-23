@@ -9,11 +9,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="root" prefHeight="50.0" prefWidth="420.0" style="-fx-background-color: #4D4545;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="50.0" prefWidth="420.0" style="-fx-background-color: #EEC4C4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Circle fx:id="profile" fill="#655a5a" layoutX="41.0" layoutY="25.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text fx:id="username" fill="#8d6262" layoutX="74.0" layoutY="31.0" onMouseClicked="#visitPage" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
-      <Button layoutX="229.0" layoutY="14.0" mnemonicParsing="false" onAction="#follow" prefHeight="25.0" prefWidth="62.0" style="-fx-border-color: green; -fx-background-color: #393232;" text="follow" textAlignment="CENTER" textFill="#8d6262" />
-      <Button layoutX="325.0" layoutY="14.0" mnemonicParsing="false" onAction="#unfollow" style="-fx-border-color: red; -fx-background-color: #393232;" text="unfollow" textFill="#8d6262" />
+      <Circle fx:id="profile" fill="#f29191" layoutX="41.0" layoutY="25.0" radius="20.0" stroke="#f29191" strokeType="INSIDE" />
+      <Text fx:id="username" fill="#a239ea" layoutX="74.0" layoutY="31.0" onMouseClicked="#visitPage" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
+      <Button layoutX="229.0" layoutY="14.0" mnemonicParsing="false" onAction="#follow" prefHeight="25.0" prefWidth="62.0" style="-fx-border-color: green; -fx-background-color: #F0D9E7;" text="follow" textAlignment="CENTER" textFill="#8d6262" />
+      <Button layoutX="325.0" layoutY="14.0" mnemonicParsing="false" onAction="#unfollow" style="-fx-border-color: red; -fx-background-color: #F0D9E7;" text="unfollow" textFill="#8d6262" />
    </children>
 </AnchorPane>

@@ -10,25 +10,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="420.0" style="-fx-background-color: #393232;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="420.0" style="-fx-background-color: #F0D9E7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Circle fx:id="pic" fill="#8d6262" layoutX="71.0" layoutY="109.0" radius="57.0" stroke="BLACK" strokeType="INSIDE" />
-      <Text fx:id="username" fill="#8d6262" layoutX="45.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" />
-      <TextArea fx:id="info" blendMode="SOFT_LIGHT" layoutX="193.0" layoutY="21.0" prefHeight="176.0" prefWidth="181.0" promptText="personal info" />
-      <ListView fx:id="posts" layoutX="1.0" layoutY="251.0" prefHeight="330.0" prefWidth="420.0" style="-fx-background-color: #4D4545;" />
-      <Text fill="#8d6262" layoutX="34.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="followings" />
-      <Text fill="#8d6262" layoutX="170.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="followers" />
-      <Text fx:id="flwingNum" fill="#ed8d8d" layoutX="93.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text fx:id="flwrNum" fill="#ed8d8d" layoutX="226.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="20.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" prefHeight="20.0" prefWidth="20.0" scaleZ="0.0" text="bck" textAlignment="CENTER">
+      <Circle fx:id="pic" fill="#eec4c4" layoutX="71.0" layoutY="109.0" radius="57.0" stroke="#ff94cc" strokeType="INSIDE" />
+      <Text fx:id="username" fill="#a239ea" layoutX="45.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" />
+      <TextArea fx:id="info" blendMode="DARKEN" layoutX="193.0" layoutY="21.0" prefHeight="176.0" prefWidth="181.0" promptText="personal info" style="-fx-background-color: #94D0CC;" />
+      <ListView fx:id="posts" layoutX="1.0" layoutY="251.0" prefHeight="330.0" prefWidth="420.0" style="-fx-background-color: #EEC4C4;" />
+      <Text fill="#a239ea" layoutX="34.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="followings" />
+      <Text fill="#a239ea" layoutX="170.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="followers" />
+      <Text fx:id="flwingNum" fill="#5c33f6" layoutX="93.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="flwrNum" fill="#5c33f6" layoutX="226.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #F0D9E7;" text="back">
          <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0" scaleZ="0.0">
+            <ImageView fitHeight="45.0" fitWidth="45.0">
                <image>
                   <Image url="@../images/back.jpg" />
                </image>
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
             </ImageView>
          </graphic>
       </Button>

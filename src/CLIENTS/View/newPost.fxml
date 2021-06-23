@@ -7,10 +7,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #393232;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CLIENTS.Controller.newPost">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #EEC4C4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CLIENTS.Controller.newPost">
    <children>
-      <TextArea fx:id="description" blendMode="SOFT_LIGHT" layoutX="100.0" layoutY="97.0" prefHeight="200.0" prefWidth="200.0" promptText="description" />
-      <TextField fx:id="title" blendMode="SOFT_LIGHT" layoutX="126.0" layoutY="57.0" promptText="title:" />
-      <Button layoutX="173.0" layoutY="358.0" mnemonicParsing="false" onAction="#publish" style="-fx-background-color: #4D4545; -fx-border-color: #ED8D8D;" text="publish" textFill="#ed8d8d" />
+      <TextArea fx:id="description" blendMode="MULTIPLY" layoutX="100.0" layoutY="97.0" prefHeight="200.0" prefWidth="200.0" promptText="description" style="-fx-border-color: #A239EA;" />
+      <TextField fx:id="title" blendMode="MULTIPLY" layoutX="126.0" layoutY="57.0" promptText="title:" style="-fx-border-color: #A239EA;" />
+      <Button layoutX="173.0" layoutY="358.0" mnemonicParsing="false" onAction="#publish" style="-fx-background-color: #FF94CC; -fx-border-color: #ED8D8D;" text="publish" textFill="#a239ea" />
    </children>
 </Pane>

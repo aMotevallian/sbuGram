@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CLIENTS.Controller.home">
    <children>
-      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #393232;">
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #EEC4C4;">
          <children>
             <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goToMenu">
                <image>
@@ -25,6 +25,6 @@
             </ImageView>
          </children>
       </Pane>
-      <ListView fx:id="postList" layoutX="34.0" layoutY="49.0" prefHeight="551.0" prefWidth="420.0" style="-fx-background-color: #4D4545;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
+      <ListView fx:id="postList" layoutX="34.0" layoutY="49.0" prefHeight="551.0" prefWidth="420.0" style="-fx-background-color: #F0D9E7;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
    </children>
 </AnchorPane>

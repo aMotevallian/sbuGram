@@ -9,24 +9,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="420.0" style="-fx-background-color: #393232;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CLIENTS.Controller.Menu">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="420.0" style="-fx-background-color: #F0D9E7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CLIENTS.Controller.Menu">
    <children>
-      <Label layoutX="144.0" layoutY="229.0" onMouseClicked="#addPost" text="Add post" textFill="#8d6262">
+      <Label layoutX="143.0" layoutY="230.0" onMouseClicked="#addPost" text="Add post" textFill="#a239ea">
          <font>
             <Font name="Century" size="37.0" />
          </font>
       </Label>
-      <Label layoutX="159.0" layoutY="177.0" onMouseClicked="#goToProfile" text="Profile" textFill="#8d6262">
+      <Label layoutX="168.0" layoutY="175.0" onMouseClicked="#goToProfile" text="Profile" textFill="#a239ea">
          <font>
             <Font name="Century" size="33.0" />
          </font>
       </Label>
-      <ImageView fitHeight="85.0" fitWidth="67.0" layoutX="186.0" layoutY="394.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="85.0" fitWidth="67.0" layoutX="186.0" layoutY="387.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/logOut.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="108.0" layoutY="282.0" onMouseClicked="#addPeople" prefHeight="37.0" prefWidth="253.0" text="Make new friends" textFill="#8d6262">
+      <Label layoutX="93.0" layoutY="289.0" onMouseClicked="#addPeople" prefHeight="37.0" prefWidth="253.0" text="Make new friends" textFill="#a239ea">
          <font>
             <Font name="Century" size="29.0" />
          </font>
