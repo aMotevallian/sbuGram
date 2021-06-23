@@ -13,10 +13,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -37,7 +34,7 @@ public class cellController {
         this.post = post;
     }
 
-    public AnchorPane init() {
+    public AnchorPane init() throws FileNotFoundException {
         username.setText(post.getAuthor());
         title.setText(post.getTitle());
         description.setText(post.getDescription());
@@ -49,7 +46,7 @@ public class cellController {
             img.setFill(new ImagePattern(new Image("CLIENTS\\images\\defaultProfile.jpg" , false)));
         }
         else {
-            Image image = new Image("CLIENTS\\images\\" + post.getAuthor() + ".jpg" ,false);
+            Image image = new Image(new FileInputStream(f));
             img.setFill(new ImagePattern(image));
         }
         date.setText(post.getDateStr());
@@ -64,6 +61,8 @@ public class cellController {
         newPost.setAuthor(post.getAuthor());
         newPost.setDescription(post.getDescription());
         newPost.setPostedBy(Main.currentUser);
+        newPost.setDate(post.getDate());
+        newPost.setDate(post.getDateStr());
         try {
             Socket socket=new Socket("localhost" , 8000);
             ObjectOutputStream os=new ObjectOutputStream(socket.getOutputStream());
