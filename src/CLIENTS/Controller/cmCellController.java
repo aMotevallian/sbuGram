@@ -12,6 +12,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class cmCellController {
@@ -26,7 +28,7 @@ public class cmCellController {
         new PageLoader().load("cmCell", this);
         this.cm=cm;
     }
-    public AnchorPane init() {
+    public AnchorPane init() throws FileNotFoundException {
         username.setText(cm.getUsername());
         cmBox.setText(cm.getComment());
         File f= new File("src\\CLIENTS\\images\\" + cm.getUsername() + ".jpg");
@@ -34,7 +36,7 @@ public class cmCellController {
             profile.setFill(new ImagePattern(new Image("CLIENTS\\images\\defaultProfile.jpg" , false)));
         }
         else {
-            Image image = new Image("CLIENTS\\images\\" + cm.getUsername()  + ".jpg" ,false);
+            Image image = new Image(new FileInputStream(f));
             profile.setFill(new ImagePattern(image));
         }
         return root;
