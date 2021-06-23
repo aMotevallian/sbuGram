@@ -9,12 +9,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -28,7 +32,7 @@ public class signUp {
     public Text pathNotFound;
 
 
-    public void signUp(ActionEvent actionEvent) throws IOException {
+    public void signUp(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
         File img=new File(imgPath.getText());
         String regex="([a-z]*[A-Z]*[0-9]*){8,}";
         if (Main.clientsUserPass.containsKey(username.getText())){
@@ -74,21 +78,12 @@ public class signUp {
             pathNotFound.setVisible(false);
             Main.clientsUserPass.put(username.getText() , password.getText());
             Main.clientUserFindPass.put(username.getText() , question.getText());
+            BufferedImage image= ImageIO.read(new File(imgPath.getText()));
+            ImageIO.write(image , "jpg" , new File("src\\CLIENTS\\images\\"+username.getText()+".jpg"));
             new Client(username.getText() , password.getText() , name.getText() , question.getText() , imgPath.getText());
+
             Main.currentUser=username.getText();
-            Socket client;
-            client = new Socket("localhost", 8000);
-            ObjectOutputStream oos = new ObjectOutputStream(client.getOutputStream());
-            ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
-            oos.writeUTF("get users");
-            oos.flush();
-            try {
-                Main.users= (ArrayList<user>) ois.readObject();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            client.close();
-            new PageLoader().load("home");
+            new PageLoader().load("logIn");
         }
     }
 
