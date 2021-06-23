@@ -5,6 +5,7 @@ import CLIENTS.Modele.PageLoader;
 import common.Post;
 import common.comment;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -14,10 +15,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -36,7 +34,7 @@ public class cm {
     comment cm=new comment();
 
     @FXML
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         comments.setItems(FXCollections.observableArrayList(post.comments));
         comments.setCellFactory(comments -> new cmCell());
         username.setText(Main.currentUser);
@@ -45,13 +43,13 @@ public class cm {
             profileImg.setFill(new ImagePattern(new Image("CLIENTS\\images\\defaultProfile.jpg" , false)));
         }
         else {
-            Image image = new Image("CLIENTS\\images\\" + Main.currentUser  + ".jpg" ,false);
+            Image image = new Image(new FileInputStream(f));
             profileImg.setFill(new ImagePattern(image));
         }
         cm.setUsername(Main.currentUser);
     }
 
-    public void send(MouseEvent mouseEvent) {
+    public void send(MouseEvent mouseEvent) throws FileNotFoundException {
         cm.setComment(commentBox.getText());
         try {
             Socket com=new Socket("localhost" , 8000);
@@ -74,9 +72,12 @@ public class cm {
             profileImg.setFill(new ImagePattern(new Image("CLIENTS\\images\\defaultProfile.jpg" , false)));
         }
         else {
-            Image image = new Image("CLIENTS\\images\\" + Main.currentUser  + ".jpg" ,false);
+            Image image = new Image(new FileInputStream(f));
             profileImg.setFill(new ImagePattern(image));
         }
         cm.setUsername(Main.currentUser);
+    }
+    public void back(ActionEvent actionEvent) throws IOException {
+        new PageLoader().load("home");
     }
 }
