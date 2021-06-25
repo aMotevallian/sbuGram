@@ -22,28 +22,31 @@ public class Main extends Application {
     public static ArrayList<Post> posts;
     public static String currentUser;
     public static ArrayList<user> users;
+    public static final String IP="localhost";
+    public static final int PORT=8000;
+
 
     static {
         try {
-            Socket client;
-            client = new Socket("localhost", 8000);
-            ObjectOutputStream oos = new ObjectOutputStream(client.getOutputStream());
-            ObjectInputStream ois = new ObjectInputStream(client.getInputStream());
+            Socket allData;
+            allData = new Socket(IP, PORT);
+            ObjectOutputStream oos = new ObjectOutputStream(allData.getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(allData.getInputStream());
             oos.writeUTF("fileData");
             oos.flush();
             clientsUserPass = new ConcurrentHashMap<>((Map<String, String>) ois.readObject());
             clientUserFindPass = new ConcurrentHashMap<>((Map<String, String>) ois.readObject());
-            client.close();
+            allData.close();
 
-            Socket client2 = new Socket("localhost", 8000);
-            ObjectOutputStream os = new ObjectOutputStream(client2.getOutputStream());
-            ObjectInputStream is = new ObjectInputStream(client2.getInputStream());
+            Socket getUsers = new Socket(IP, PORT);
+            ObjectOutputStream os = new ObjectOutputStream(getUsers.getOutputStream());
+            ObjectInputStream is = new ObjectInputStream(getUsers.getInputStream());
             os.writeUTF("get users");
             os.flush();
             users= (ArrayList<user>) is.readObject();
-            client2.close();
+            getUsers.close();
 
-            Socket clientPosts = new Socket("localhost", 8000);
+            Socket clientPosts = new Socket(IP, PORT);
             ObjectOutputStream ooss = new ObjectOutputStream(clientPosts.getOutputStream());
             ObjectInputStream oiss = new ObjectInputStream(clientPosts.getInputStream());
             ooss.writeUTF("initialize posts");
@@ -51,17 +54,16 @@ public class Main extends Application {
             posts = (ArrayList<Post>) oiss.readObject();
             clientPosts.close();
 
-            Socket clientt = new Socket("localhost", 8000);
-            ObjectOutputStream oos2 = new ObjectOutputStream(clientt.getOutputStream());
-            ObjectInputStream ois2 = new ObjectInputStream(clientt.getInputStream());
+            Socket getImages = new Socket(IP, PORT);
+            ObjectOutputStream oos2 = new ObjectOutputStream(getImages.getOutputStream());
+            ObjectInputStream ois2 = new ObjectInputStream(getImages.getInputStream());
             oos2.writeUTF("send profile images");
             oos2.flush();
-            //int num=ois2.readInt();
             for (int i=0 ; i<users.size() ; i++) {
                 String name=null;
                 name = ois2.readUTF();
 
-                InputStream inputStream = clientt.getInputStream();
+                InputStream inputStream = getImages.getInputStream();
                 byte[] sizeAr = new byte[40000];
                 inputStream.read(sizeAr);
                 int size = ByteBuffer.wrap(sizeAr).asIntBuffer().get();
@@ -74,7 +76,7 @@ public class Main extends Application {
                 if (!f.exists())
                     ImageIO.write(image, "jpg", f);
             }
-            clientt.close();
+            getImages.close();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

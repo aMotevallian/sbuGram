@@ -23,7 +23,7 @@ public class Client {
         this.ques=ques;
         this.path=path;
         Main.currentUser=username;
-        client=new Socket("localhost" , 8000);
+        client=new Socket(Main.IP , Main.PORT);
         oos=new ObjectOutputStream(client.getOutputStream());
         ois=new ObjectInputStream(client.getInputStream());
         oos.writeUTF("signup");
@@ -40,9 +40,8 @@ public class Client {
         os.write(size);
         os.write(baos.toByteArray());
         os.flush();
-        System.out.println("im connected");
         Socket getUsers;
-        getUsers = new Socket("localhost", 8000);
+        getUsers = new Socket(Main.IP, Main.PORT);
         ObjectOutputStream oos = new ObjectOutputStream(getUsers.getOutputStream());
         ObjectInputStream ois = new ObjectInputStream(getUsers.getInputStream());
         oos.writeUTF("get users");
@@ -58,13 +57,12 @@ public class Client {
         this.username = username;
         this.password = password;
         Main.currentUser=username;
-        client=new Socket("localhost" , 8000);
+        client=new Socket(Main.IP , Main.PORT);
         oos=new ObjectOutputStream(client.getOutputStream());
         ois=new ObjectInputStream(client.getInputStream());
         oos.writeUTF("login");
         oos.flush();
         oos.writeUTF(username + "\t"+password );
         oos.flush();
-        System.out.println("im connected");
     }
 }
