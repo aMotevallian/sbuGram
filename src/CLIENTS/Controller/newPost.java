@@ -29,7 +29,7 @@ public class newPost {
         current.setDate(date.toString());
         Main.posts.add(current);
         try {
-            Socket socket=new Socket("localhost" , 8000);
+            Socket socket=new Socket(Main.IP , Main.PORT);
             ObjectOutputStream os=new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream is=new ObjectInputStream(socket.getInputStream());
             os.writeUTF("add post");

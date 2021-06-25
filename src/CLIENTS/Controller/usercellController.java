@@ -50,7 +50,7 @@ public class usercellController {
             for (user user : Main.users) {
                 if (user.getUsername().equals(Main.currentUser)) {
                     try {
-                        Socket follow = new Socket("localhost", 8000);
+                        Socket follow = new Socket(Main.IP, Main.PORT);
                         ObjectOutputStream oos = new ObjectOutputStream(follow.getOutputStream());
                         ObjectInputStream ois = new ObjectInputStream(follow.getInputStream());
                         oos.writeUTF("follow");

@@ -52,7 +52,7 @@ public class cm {
     public void send(MouseEvent mouseEvent) throws FileNotFoundException {
         cm.setComment(commentBox.getText());
         try {
-            Socket com=new Socket("localhost" , 8000);
+            Socket com=new Socket(Main.IP , Main.PORT);
             ObjectOutputStream oos=new ObjectOutputStream(com.getOutputStream());
             ObjectInputStream ois=new ObjectInputStream(com.getInputStream());
             oos.writeUTF("add cm");

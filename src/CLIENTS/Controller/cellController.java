@@ -64,7 +64,7 @@ public class cellController {
         newPost.setDate(post.getDate());
         newPost.setDate(post.getDateStr());
         try {
-            Socket socket=new Socket("localhost" , 8000);
+            Socket socket=new Socket(Main.IP , Main.PORT);
             ObjectOutputStream os=new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream is =new ObjectInputStream(socket.getInputStream());
             os.writeUTF("add post");
@@ -90,7 +90,7 @@ public class cellController {
         }
         else {
             try {
-                Socket like = new Socket("localhost", 8000);
+                Socket like = new Socket(Main.IP, Main.PORT);
                 ObjectOutputStream oos = new ObjectOutputStream(like.getOutputStream());
                 ObjectInputStream ois = new ObjectInputStream(like.getInputStream());
                 oos.writeUTF("like");
