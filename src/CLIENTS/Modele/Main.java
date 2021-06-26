@@ -24,6 +24,7 @@ public class Main extends Application {
     public static ArrayList<user> users;
     public static final String IP="localhost";
     public static final int PORT=8000;
+    public static String lastPage;
 
 
     static {
@@ -59,7 +60,8 @@ public class Main extends Application {
             ObjectInputStream ois2 = new ObjectInputStream(getImages.getInputStream());
             oos2.writeUTF("send profile images");
             oos2.flush();
-            for (int i=0 ; i<users.size() ; i++) {
+            int num=ois2.read();
+            for (int i=0 ; i<num ; i++) {
                 String name=null;
                 name = ois2.readUTF();
 

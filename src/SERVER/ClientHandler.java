@@ -70,6 +70,7 @@ public class ClientHandler extends Thread {
 
                     BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
                     File f=new File("src\\SERVER\\profileImagesServer\\"+username+".jpg");
+                    if (image!=null)
                     ImageIO.write(image, "jpg",f);
 
                     System.out.println(username + " registered."+"\t"+imgPath);
@@ -112,11 +113,18 @@ public class ClientHandler extends Thread {
                         oos.flush();
                         bw.close();
 
-                        System.out.println(newPost.getAuthor()+" publish");
-                        System.out.println("message:" + newPost.getTitle()+" "+newPost.getPostedBy());
-                        java.util.Date date = new java.util.Date();
-                        System.out.println("time: " + date);
-                        System.out.println();
+                        if (!newPost.getAuthor().equals(newPost.getPostedBy())){
+                            System.out.println("message: repost "+newPost.getTitle()+" "+newPost.getPostedBy());
+                            java.util.Date date = new java.util.Date();
+                            System.out.println("time: " + date);
+                            System.out.println();
+                        }else {
+                            System.out.println(newPost.getAuthor() + " publish");
+                            System.out.println("message:" + newPost.getTitle() + " " + newPost.getPostedBy());
+                            java.util.Date date = new java.util.Date();
+                            System.out.println("time: " + date);
+                            System.out.println();
+                        }
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -231,6 +239,8 @@ public class ClientHandler extends Thread {
                     int num=0;
                     File file1=new File("src\\SERVER\\profileImagesServer");
                     num= file1.listFiles().length;
+                    oos.write(num);
+                    oos.flush();
                     File file2=new File("src\\SERVER\\profileImagesServer");
                     for (File f: file2.listFiles()){
                         if (f.isFile() && f.getName().endsWith(".jpg"))

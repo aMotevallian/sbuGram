@@ -19,26 +19,26 @@ public class usercellController {
     public AnchorPane root;
     public Circle profile;
     public Text username;
-    boolean followed=false;
-    boolean unfollowed=false;
+    boolean followed = false;
+    boolean unfollowed = false;
 
     user user;
+
     public usercellController(user user) {
         try {
             new PageLoader().load("usercell", this);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.user=user;
+        this.user = user;
     }
 
     public AnchorPane init() throws FileNotFoundException {
         username.setText(user.getUsername());
-        File f= new File("src\\CLIENTS\\images\\" + user.getUsername() + ".jpg");
-        if (!f.exists()){
-            profile.setFill(new ImagePattern(new Image("CLIENTS\\images\\defaultProfile.jpg" , false)));
-        }
-        else {
+        File f = new File("src\\CLIENTS\\images\\" + user.getUsername() + ".jpg");
+        if (!f.exists()) {
+            profile.setFill(new ImagePattern(new Image("CLIENTS\\images\\defaultProfile.jpg", false)));
+        } else {
             Image image = new Image(new FileInputStream(f));
             profile.setFill(new ImagePattern(image));
         }
@@ -49,20 +49,22 @@ public class usercellController {
         if (!followed) {
             for (user user : Main.users) {
                 if (user.getUsername().equals(Main.currentUser)) {
-                    try {
-                        Socket follow = new Socket(Main.IP, Main.PORT);
-                        ObjectOutputStream oos = new ObjectOutputStream(follow.getOutputStream());
-                        ObjectInputStream ois = new ObjectInputStream(follow.getInputStream());
-                        oos.writeUTF("follow");
-                        oos.flush();
-                        oos.writeObject(user);
-                        oos.flush();
-                        oos.writeUTF(this.user.getUsername());
-                        oos.flush();
-                        Main.users = (ArrayList<common.user>) ois.readObject();
-                        follow.close();
-                    } catch (IOException | ClassNotFoundException e) {
-                        e.printStackTrace();
+                    if (!user.getFollowerList().contains(this.user.getUsername())) {
+                        try {
+                            Socket follow = new Socket(Main.IP, Main.PORT);
+                            ObjectOutputStream oos = new ObjectOutputStream(follow.getOutputStream());
+                            ObjectInputStream ois = new ObjectInputStream(follow.getInputStream());
+                            oos.writeUTF("follow");
+                            oos.flush();
+                            oos.writeObject(user);
+                            oos.flush();
+                            oos.writeUTF(this.user.getUsername());
+                            oos.flush();
+                            Main.users = (ArrayList<common.user>) ois.readObject();
+                            follow.close();
+                        } catch (IOException | ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -94,8 +96,8 @@ public class usercellController {
             unfollowed = true;
         }
     }
-    public void visitPage (MouseEvent mouseEvent) throws IOException {
-        System.out.println(this.user.getUsername());
-        new PageLoader().load2("othersProfile" , new othersProfile(this.user.getUsername()));
+
+    public void visitPage(MouseEvent mouseEvent) throws IOException {
+        new PageLoader().load2("othersProfile", new othersProfile(this.user.getUsername()));
     }
 }

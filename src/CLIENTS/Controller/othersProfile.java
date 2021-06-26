@@ -35,6 +35,18 @@ public class othersProfile {
     }
     @FXML
     public void initialize() throws FileNotFoundException {
+        Main.lastPage="othersProfile";
+        try {
+            Socket clientPosts = new Socket(Main.IP, Main.PORT);
+            ObjectOutputStream ooss = new ObjectOutputStream(clientPosts.getOutputStream());
+            ObjectInputStream oiss = new ObjectInputStream(clientPosts.getInputStream());
+            ooss.writeUTF("initialize posts");
+            ooss.flush();
+            Main.posts = (ArrayList<Post>) oiss.readObject();
+            clientPosts.close();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
         ArrayList<Post> postz=new ArrayList<>();
         for (Post p: Main.posts){
             if (p.getPostedBy().equals(name))

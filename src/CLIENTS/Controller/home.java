@@ -10,6 +10,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -19,6 +23,18 @@ public class home {
 
     @FXML
     public void initialize() {
+        Main.lastPage="home";
+        try {
+            Socket clientPosts = new Socket(Main.IP, Main.PORT);
+            ObjectOutputStream ooss = new ObjectOutputStream(clientPosts.getOutputStream());
+            ObjectInputStream oiss = new ObjectInputStream(clientPosts.getInputStream());
+            ooss.writeUTF("initialize posts");
+            ooss.flush();
+            Main.posts = (ArrayList<Post>) oiss.readObject();
+            clientPosts.close();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
         user mainUser=null;
         for (user user:Main.users)
             if (Main.currentUser.equals(user.getUsername()))
@@ -46,6 +62,17 @@ public class home {
     }
 
     public void refresh(MouseEvent mouseEvent) {
+        try {
+            Socket clientPosts = new Socket(Main.IP, Main.PORT);
+            ObjectOutputStream ooss = new ObjectOutputStream(clientPosts.getOutputStream());
+            ObjectInputStream oiss = new ObjectInputStream(clientPosts.getInputStream());
+            ooss.writeUTF("initialize posts");
+            ooss.flush();
+            Main.posts = (ArrayList<Post>) oiss.readObject();
+            clientPosts.close();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
         posts=new ArrayList<>();
         user mainUser=null;
         for (user user:Main.users)

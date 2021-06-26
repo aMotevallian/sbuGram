@@ -37,6 +37,28 @@ public class profile {
 
     @FXML
     public void initialize() throws IOException {
+        Main.lastPage="profile";
+        try {
+            Socket getUsers=new Socket(Main.IP , Main.PORT);
+            ObjectOutputStream oos=new ObjectOutputStream(getUsers.getOutputStream());
+            ObjectInputStream ois=new ObjectInputStream(getUsers.getInputStream());
+            oos.writeUTF("get users");
+            oos.flush();
+            Main.users= (ArrayList<user>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            Socket clientPosts = new Socket(Main.IP, Main.PORT);
+            ObjectOutputStream ooss = new ObjectOutputStream(clientPosts.getOutputStream());
+            ObjectInputStream oiss = new ObjectInputStream(clientPosts.getInputStream());
+            ooss.writeUTF("initialize posts");
+            ooss.flush();
+            Main.posts = (ArrayList<Post>) oiss.readObject();
+            clientPosts.close();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
         for (user user : Main.users){
             if (user.getUsername().equals(Main.currentUser)){
                 flwing.setText(String.valueOf(user.getFollowings()));
