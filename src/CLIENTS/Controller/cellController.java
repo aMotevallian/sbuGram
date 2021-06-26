@@ -39,7 +39,14 @@ public class cellController {
         title.setText(post.getTitle());
         description.setText(post.getDescription());
         description.setEditable(false);
-        likes.setText(String.valueOf(post.getLikes()));
+        if (!post.getPostedBy().equals(post.getAuthor())){
+            for (Post p:Main.posts){
+                if (p.getTitle().equals(post.getTitle())&&p.getPostedBy().equals(p.getAuthor()))
+                    likes.setText(String.valueOf(p.getLikes()));
+            }
+        }else {
+            likes.setText(String.valueOf(post.getLikes()));
+        }
         likes.setTextAlignment(TextAlignment.CENTER);
         File f= new File("src\\CLIENTS\\images\\" + post.getAuthor() + ".jpg");
         if (!f.exists()){
@@ -56,13 +63,8 @@ public class cellController {
         new PageLoader().load2("cm" , new cm(post));
     }
     public void repost(ActionEvent actionEvent) {
-        Post newPost=new Post();
-        newPost.setTitle(post.getTitle());
-        newPost.setAuthor(post.getAuthor());
-        newPost.setDescription(post.getDescription());
+        Post newPost=post;
         newPost.setPostedBy(Main.currentUser);
-        newPost.setDate(post.getDate());
-        newPost.setDate(post.getDateStr());
         try {
             Socket socket=new Socket(Main.IP , Main.PORT);
             ObjectOutputStream os=new ObjectOutputStream(socket.getOutputStream());
@@ -89,20 +91,22 @@ public class cellController {
             likes.setText(String.valueOf(post.getLikes()));
         }
         else {
-            try {
-                Socket like = new Socket(Main.IP, Main.PORT);
-                ObjectOutputStream oos = new ObjectOutputStream(like.getOutputStream());
-                ObjectInputStream ois = new ObjectInputStream(like.getInputStream());
-                oos.writeUTF("like");
-                oos.flush();
-                oos.writeObject(post);
-                oos.flush();
-                oos.writeUTF(Main.currentUser);
-                oos.flush();
-                Main.posts = (ArrayList<Post>) ois.readObject();
-                like.close();
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+            if (!post.pplWhoLiked.contains(Main.currentUser)) {
+                try {
+                    Socket like = new Socket(Main.IP, Main.PORT);
+                    ObjectOutputStream oos = new ObjectOutputStream(like.getOutputStream());
+                    ObjectInputStream ois = new ObjectInputStream(like.getInputStream());
+                    oos.writeUTF("like");
+                    oos.flush();
+                    oos.writeObject(post);
+                    oos.flush();
+                    oos.writeUTF(Main.currentUser);
+                    oos.flush();
+                    Main.posts = (ArrayList<Post>) ois.readObject();
+                    like.close();
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
             liked = true;
         }
