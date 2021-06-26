@@ -1,3 +1,8 @@
+/**
+ * github link: "https://github.com/aMotevallian/sbuGram"
+ */
+
+
 package CLIENTS.Modele;
 
 import common.Post;
