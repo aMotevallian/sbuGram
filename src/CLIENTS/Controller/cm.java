@@ -78,6 +78,13 @@ public class cm {
         cm.setUsername(Main.currentUser);
     }
     public void back(ActionEvent actionEvent) throws IOException {
-        new PageLoader().load("home");
+        if (Main.lastPage.equals("home"))
+            new PageLoader().load("home");
+        else if (Main.lastPage.equals("othersProfile")){
+            new PageLoader().load2("othersProfile", new othersProfile(post.getPostedBy()));
+        }
+        else if(Main.lastPage.equals("profile")){
+            new PageLoader().load("profile");
+        }
     }
 }
